@@ -1,0 +1,205 @@
+/*
+ * ========================================================================
+ * TEMA HIJO YOOTHEME RGMUSIC - Estilos Personalizados
+ * ========================================================================
+ * 
+ * Este archivo contiene todos los estilos personalizados del tema.
+ * Modifica las variables CSS para cambiar colores, tipografías, etc.
+ */
+
+/* ========================================================================
+   VARIABLES CSS - Personaliza aquí colores y tipografías
+   ======================================================================== */
+
+:root {
+    /* COLORES PRINCIPALES */
+    --pareli-primary: #ff00c1;          /* Color principal (magenta) */
+    --pareli-secondary: #00fff9;        /* Color secundario (cyan) */
+    --pareli-dark: #000000;             /* Negro */
+    --pareli-light: #ffffff;            /* Blanco */
+    --pareli-gray: #666666;             /* Gris */
+    
+    /* TIPOGRAFÍAS */
+    --pareli-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --pareli-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    
+    /* TAMAÑOS DE FUENTE */
+    --pareli-font-size-base: 16px;
+    --pareli-font-size-small: 14px;
+    --pareli-font-size-large: 18px;
+    --pareli-font-size-h1: 48px;
+    --pareli-font-size-h2: 36px;
+    --pareli-font-size-h3: 28px;
+    
+    /* ESPACIADOS */
+    --pareli-spacing-xs: 8px;
+    --pareli-spacing-sm: 16px;
+    --pareli-spacing-md: 24px;
+    --pareli-spacing-lg: 32px;
+    --pareli-spacing-xl: 48px;
+    
+    /* BORDES Y SOMBRAS */
+    --pareli-border-radius: 4px;
+    --pareli-box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================================================
+   TIPOGRAFÍAS GLOBALES
+   ======================================================================== */
+
+body {
+    font-family: var(--pareli-font-body);
+    font-size: var(--pareli-font-size-base);
+    color: var(--pareli-gray);
+}
+
+h1, h2, h3, h4, h5, h6,
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6 {
+    font-family: var(--pareli-font-heading);
+    color: var(--pareli-dark);
+}
+
+h1, .uk-h1 { font-size: var(--pareli-font-size-h1); }
+h2, .uk-h2 { font-size: var(--pareli-font-size-h2); }
+h3, .uk-h3 { font-size: var(--pareli-font-size-h3); }
+
+/* ========================================================================
+   ENLACES
+   ======================================================================== */
+
+a {
+    color: var(--pareli-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--pareli-secondary);
+}
+
+/* ========================================================================
+   BOTONES
+   ======================================================================== */
+
+.uk-button-primary {
+    background: linear-gradient(135deg, var(--pareli-primary), var(--pareli-secondary));
+    border: none;
+    color: var(--pareli-light);
+    transition: all 0.3s ease;
+}
+
+.uk-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 193, 0.4);
+}
+
+/* ========================================================================
+   REPRODUCTOR DE VINILO GIRATORIO
+   ======================================================================== */
+
+.vinyl-player {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    padding-left: 50px;
+    overflow: visible;
+}
+
+/* Cover del álbum */
+.vinyl-cover {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.vinyl-cover:hover {
+    transform: scale(1.02);
+}
+
+/* Vinilo - SIEMPRE GIRANDO */
+.vinyl-disc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-25%, -50%);
+    border-radius: 50%;
+    z-index: 1;
+    animation: spin-always 3s linear infinite;
+}
+
+/* Animación de rotación continua */
+@keyframes spin-always {
+    from { transform: translate(-25%, -50%) rotate(0deg); }
+    to { transform: translate(-25%, -50%) rotate(360deg); }
+}
+
+/* Etiqueta central del vinilo */
+.vinyl-label {
+    display: none;
+}
+
+/* Ocultar botón de play */
+.vinyl-play-btn,
+.vinyl-player .play-btn,
+.vinyl-player button {
+    display: none !important;
+}
+
+/* ========================================================================
+   RESPONSIVE - Ajustes para móviles y tablets
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --pareli-font-size-h1: 36px;
+        --pareli-font-size-h2: 28px;
+        --pareli-font-size-h3: 22px;
+    }
+    
+    .vinyl-player {
+        width: 300px;
+        height: 300px;
+        padding-left: 30px;
+    }
+    
+    .vinyl-cover {
+        width: 240px;
+        height: 240px;
+        top: 30px;
+    }
+    
+    .vinyl-disc {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vinyl-player {
+        width: 250px;
+        height: 250px;
+        padding-left: 20px;
+    }
+    
+    .vinyl-cover {
+        width: 200px;
+        height: 200px;
+        top: 25px;
+    }
+    
+    .vinyl-disc {
+        width: 180px;
+        height: 180px;
+    }
+}
